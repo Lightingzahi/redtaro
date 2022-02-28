@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>街景标注</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 12px/16px Verdana, Helvetica, Arial, sans-serif;
+        }
+        p {
+            width: 603px;
+            padding-top: 3px;
+            overflow: hidden;
+        }
+        .btn {
+            width: 142px;
+        }
+    </style>
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=d84d6d83e0e51e481e50454ccbe8986b"></script>
+
+</head>
+
+<body onLoad="init();">
+    <script>
+        function init() {
+            //创建街景
+            var pano = new qq.maps.Panorama(document.getElementById('pano_container'), {
+                pano: '14021328130606164032600',
+                pov: {
+                    heading: 90,
+                    pitch: 4
+                }
+            });
+            //添加街景覆盖物
+            var panolabel = new qq.maps.PanoramaLabel({
+                //设置lablel距地面高度
+                altitude: 80.0,
+                //设置label要显示的街景对象
+                panorama: pano,
+                //设置label所在位置
+                position: (new qq.maps.LatLng(39.90473941, 116.3896827)),
+                //设置label显示的内容
+                content: 'REDTARO工作室',
+                //设置label的可见性，false为不可见，默认为true
+                visible: true
+            });
+
+        }
+    </script>
+    <div style="width:603px;height:300px" id="pano_container"></div>
+    <p>I'M REDTARO.</p>
+</body>
+
+</html>
